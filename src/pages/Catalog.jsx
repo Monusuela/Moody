@@ -1,4 +1,4 @@
-import {Fragment} from "react";
+import {Fragment, useState} from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Container from "../components/container";
 import {Button, Checkbox, Flex, Typography} from "antd";
@@ -9,6 +9,9 @@ import Product1 from "../images/product1.png";
 import {default as Btn} from "../components/Button";
 
 const Catalog = () => {
+    const [IsShow, setIsShow] = useState(false)
+
+    const handleFilter = () => setIsShow(prev => !prev)
   return(
       <Fragment>
           <Breadcrumb />
@@ -32,7 +35,7 @@ const Catalog = () => {
               <Container>
                   <Flex justify={"space-between"} gap={130}>
                       {/*Products__aside show*/}
-                      <aside className={`Products__aside show`}>
+                      <aside className={`Products__aside ${IsShow && "show"}`}>
                           <div className="Products__aside-item">
                               <Typography.Title level={4} className={`Products__aside-title`}>New
                                   arrivals</Typography.Title>
@@ -184,12 +187,12 @@ const Catalog = () => {
                       </aside>
 
                       {/*Products__wrap active*/}
-                      <article className="Products__wrap active">
+                      <article className={`Products__wrap ${IsShow && "active"}`}>
                           <Title level={"h1"} className={`Products__title`}>BEDROOM</Title>
                           <Title level={"h3"} className={`Products__subtitle`}>ITS EASY TO TRANSFORM YOUR BEDROOM INTERIOR WITH OUR GREAT SELECTION OF ACCESSORIES.</Title>
 
                           <Flex align={"center"} justify={"space-between"} className="Products__filters">
-                              <Button icon={<FiFilter/>}>
+                              <Button onClick={handleFilter} icon={<FiFilter/>}>
                                   filter & sort
                               </Button>
 

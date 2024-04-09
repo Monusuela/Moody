@@ -23,7 +23,16 @@
       "stars": 4,
       "gender": "Man",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bedroom", "Bathroom"],
+        "gender": "Man",
+        "colors": [
+          "brown",
+          "green-secondary"
+        ]
+      }
     },
     {
       "id": 2,
@@ -47,7 +56,15 @@
       "stars": 4,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Child Room", "Outdoor"],
+        "gender": "Woman",
+        "colors": [
+          "grey"
+        ]
+      }
     },
     {
       "id": 3,
@@ -71,7 +88,15 @@
       "stars": 4,
       "gender": "Man",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Child Room", "Outdoor"],
+        "gender": "Man",
+        "colors": [
+          "orange"
+        ]
+      }
     },
     {
       "id": 4,
@@ -95,7 +120,15 @@
       "stars": 4,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Living Room", "Outdoor"],
+        "gender": "Woman",
+        "colors": [
+          "grey"
+        ]
+      }
     },
     {
       "id": 5,
@@ -119,7 +152,16 @@
       "stars": 4,
       "gender": "Man",
       "top": false,
-      "quantity":      1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Living Room", "Child Room"],
+        "gender": "Man",
+        "colors": [
+          "grey",
+          "yellow"
+        ]
+      }
     },
     {
       "id": 6,
@@ -143,7 +185,15 @@
       "stars": 4,
       "gender": "Man",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Outdoor", "Child Room"],
+        "gender": "Man",
+        "colors": [
+          "lightbrown"
+        ]
+      }
     },
     {
       "id": 7,
@@ -168,7 +218,16 @@
       "stars": 4,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Bedroom","Outdoor", "Living Room"],
+        "gender": "Woman",
+        "colors": [
+          "brown",
+          "lightbrown"
+        ]
+      }
     },
     {
       "id": 8,
@@ -192,7 +251,15 @@
       "stars": 4,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Child Room","Outdoor", "Living Room"],
+        "gender": "Woman",
+        "colors": [
+          "grey"
+        ]
+      }
     },
     {
       "id": 9,
@@ -216,7 +283,17 @@
       "stars": 4,
       "gender": "Man",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Child Room","Outdoor", "Bathroom"],
+        "gender": "Man",
+        "colors": [
+          "pink", 
+          "lightgreen", 
+          "grey"
+        ]
+      }
     },
     {
       "id": 10,
@@ -240,7 +317,16 @@
       "stars": 4,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Outdoor", "Bathroom"],
+        "gender": "Woman",
+        "colors": [
+          "brown", 
+          "grey"
+        ]
+      }
     },
     {
       "id": 11,
@@ -264,7 +350,15 @@
       "stars": 5,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bathroom", "Child Room"],
+        "gender": "Woman",
+        "colors": [
+          "march", "grey", "lightbrown"
+        ]
+      }
     },
     {
       "id": 12,
@@ -288,7 +382,15 @@
       "stars": 4,
       "gender": "Man",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bedroom", "Child Room"],
+        "gender": "Man",
+        "colors": [
+          "lightbrown", "march", "grey"
+        ]
+      }
     },
     {
       "id": 13,
@@ -313,7 +415,16 @@
       "stars": 2,
       "gender": "Woman",
       "top": true,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Living Room","Bedroom", "Child Room"],
+        "gender": "Woman",
+        "colors": [
+          "brown",
+        "green-secondary"
+        ]
+      }
     },
     {
       "id": 14,
@@ -337,7 +448,15 @@
       "stars": 4,
       "gender": "Woman",
       "top": false,
-      "quantity": 1
+      "quantity": 1,
+      "category": {
+
+        "shopBy": ["Outdoor","Bedroom", "Child Room"],
+        "gender": "Woman",
+        "colors": [
+          "brown"
+        ]
+      }
     }
   ],
   "blogs": [
