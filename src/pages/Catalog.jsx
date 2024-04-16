@@ -1,4 +1,4 @@
-import {Fragment, useState} from "react";
+import {Fragment, useState, useContext, useEffect} from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Container from "../components/container";
 import {Button, Checkbox, Flex, Typography} from "antd";
@@ -7,11 +7,54 @@ import {FiFilter} from "react-icons/fi";
 import Cart from "../components/Cart";
 import Product1 from "../images/product1.png";
 import {default as Btn} from "../components/Button";
+import { Context } from "../context/index";
+import Item from "antd/es/list/Item";
 
 const Catalog = () => {
     const [IsShow, setIsShow] = useState(false)
 
+    const {ProductsData} = useContext(Context)
+
+    const [Products, setProducts] = useState([])
+
     const handleFilter = () => setIsShow(prev => !prev)
+
+    const handleProducts = () => {
+        setProducts(() => ProductsData && ProductsData?.length ?
+    ProductsData : [])
+    }
+
+    const handleShopBy = e => {
+        const value = e.target.dataset.shopBy;
+
+        ProductsData.map(product => {
+            const filtered = product.category?.shopBy?.filtered(Item => {
+                return Item.includes(value)
+            })
+
+            setProducts(filtered)
+        })
+
+        console.log(filtered);
+    }
+
+    useEffect(()=>{
+        setProducts(() => ProductsData && ProductsData?.length ?
+    ProductsData : [])
+     },[ProductsData?.length])
+
+    const product = Products
+    ?.map((product, i) => {
+        return <Fragment key={i}>
+            <Cart href={`/catalog/product/${product.id}`} 
+            type={"product"} 
+            vertical  
+            image={product.image} 
+            title={product.title} 
+            colors={product.category?.colors} 
+            price={product.price} />
+        </Fragment>
+    })
   return(
       <Fragment>
           <Breadcrumb />
@@ -52,23 +95,23 @@ const Catalog = () => {
 
                               <ul className={`list-none Products__aside-list`}>
                                   <li className={"active"}>
-                                      <Title bodyText={'p'} className={`Products__aside-text`}>Bedroom</Title>
+                                      <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Bedroom"}>Bedroom</Title>
                                   </li>
 
                                   <li>
-                                      <Title bodyText={'p'} className={`Products__aside-text`}>living room</Title>
+                                      <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"living room"}>living room</Title>
                                   </li>
 
                                   <li>
-                                      <Title bodyText={'p'} className={`Products__aside-text`}>child room</Title>
+                                      <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"child room"}>child room</Title>
                                   </li>
 
                                   <li>
-                                      <Title bodyText={'p'} className={`Products__aside-text`}>bathroom</Title>
+                                      <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"bathroom"}>bathroom</Title>
                                   </li>
 
                                   <li>
-                                      <Title bodyText={'p'} className={`Products__aside-text`}>Outdoor</Title>
+                                      <Title bodyText={'p'} className={`Products__aside-text`} onClick={handleShopBy} data-shop-by={"Outdoor"}>Outdoor</Title>
                                   </li>
                               </ul>
                           </div>
@@ -200,27 +243,16 @@ const Catalog = () => {
                                   <Btn className={`Products__filters-red`} secondary>
                                       <Title bodyText={"p"}>Models</Title>
                                   </Btn>
-                                  <Btn secondary>
+                                  <Btn secondary onClick={handleProducts}>
                                       <Title bodyText={"p"}>products</Title>
                                   </Btn>
 
                               </div>
                           </Flex>
 
-                          <Flex gap={24} wrap={"wrap"}>
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                              <Cart href={"#"} type={"product"} vertical image={Product1} title={"Velvet Covvered"} colors={["white", "black"]} price={30} />
-                          </Flex>
+                         {Products.length > 0 ?  <Flex gap={24} wrap={"wrap"}>
+                              {product}
+                          </Flex> : <Title bodyText={"p"}>Empty</Title>}
 
                           <div className="Products__buttons">
                               <Btn primary>load more products</Btn>
