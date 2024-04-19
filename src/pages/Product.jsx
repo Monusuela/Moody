@@ -1,4 +1,4 @@
-import {Fragment} from "react";
+import {Fragment, useState, useEffect, useContext} from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Container from "../components/container";
 import {Col, Flex, Image, Row, Select, Typography} from "antd";
@@ -10,8 +10,31 @@ import Title from "../components/Title";
 import {FaLocationDot} from "react-icons/fa6";
 import AlsoBuy from "../components/Also-buy";
 import {default as Btn} from "../components/Button";
+import axios from "axios";
+import { Context } from "../context/index";
+import { useParams } from "react-router-dom";
 
 const Product = () => {
+    const { APIUrl } = useContext(Context);
+    const {id} = useParams()
+
+    const [Product, setProduct] = useState({})
+    const [Have, setHave] = useState(false)
+
+    useEffect(() => {
+        try{
+            axios.get(`${APIUrl}/products/${id}`).then(response => {
+                const data = response.data;
+                setHave(true);
+                setProduct(data)
+            })
+        } catch (error) {
+            console.error(error);
+            setHave(false);
+            setProduct({})
+        }
+    }, [])
+
   return(
       <Fragment>
           <Breadcrumb current={"Checked Duvet Cover Set"} />

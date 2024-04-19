@@ -14,7 +14,7 @@ import Home from "./pages/Home"
 import Catalog from "./pages/Catalog"
 import Product from "./pages/Product"
 import Bag from "./pages/Busket";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound"; 
 import Saved from "./pages/Saved";
 import Input from "./components/Input";
 
