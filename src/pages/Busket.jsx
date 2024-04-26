@@ -11,8 +11,26 @@ import Input from "../components/Input";
 import {MdOutlineEmail} from "react-icons/md";
 import {default as Btn} from "../components/Button";
 import AlsoBuy from "../components/Also-buy";
+import { useCart } from "react-use-cart";
+import { ProductItem } from "./ProductItem";
 
 const Bag = () => {
+    const {isEmpty, items, updataItemQuantity, removeItem} = useCart()
+
+    const productItem = items.map((product, index) => {
+
+        return <Fragment>
+            <ProductItem 
+            color={product.colors.join(" ")}
+            image={product.image}
+            price={product.price}
+            totalPrice={product.price * product.quantity}
+            size={product.size}
+            title={product.title}
+            id={product.id} />
+        </Fragment>
+    }) 
+
   return(
       <Fragment>
           <Breadcrumb />
@@ -25,92 +43,7 @@ const Bag = () => {
 
                   <Row className={`Shopping-bag__row`} justify={"space-between"}>
                       <Col span={13} className={`Shopping-bag--bag`}>
-                        <Flex gap={18} className={`Shopping-bag__item`}>
-                            <Img src={Product} alt={"Product"} className={`Shopping-bag__image`} />
-
-                            <div className="Shopping-bag__item-content">
-                                <Title bodyText={"p"} className={`Shopping-bag__item-title`}>
-                                    Checked Duvet Cover Set
-                                </Title>
-
-                                <Title level={"h3"} className={`Shopping-bag__item-price`}>
-                                    39.99 $
-                                </Title>
-
-                                <ol className={`list-none Shopping-bag__item-list`}>
-                                    <li className={`Shopping-bag__item-list__item`}>
-                                        Art. No.: 54637253
-                                    </li>
-                                    <li className={`Shopping-bag__item-list__item`}>
-                                        Color: Mint
-                                    </li>
-                                    <li className={`Shopping-bag__item-list__item`}>
-                                        Size: 21*45
-                                    </li>
-                                    <li className={`Shopping-bag__item-list__item`}>
-                                        Total: 39.99
-                                    </li>
-                                </ol>
-
-                                <Flex gap={6}>
-                                    <Button icon={<IoHeartOutline />} />
-
-                                    <Select
-                                        defaultValue={"1"}
-                                        options={[
-                                            { value: 1, label: 1, disabled: true},
-                                            { value: 2, label: 2 },
-                                        ]}
-                                    />
-                                </Flex>
-
-                                <Button icon={<IoMdClose />} className={`Shopping-bag__item-close`} />
-                            </div>
-                        </Flex>
-
-                          <Flex gap={18} className={`Shopping-bag__item`}>
-                              <Img src={Product} alt={"Product"} className={`Shopping-bag__image`} />
-
-                              <div className="Shopping-bag__item-content">
-                                  <Title bodyText={"p"} className={`Shopping-bag__item-title`}>
-                                      Checked Duvet Cover Set
-                                  </Title>
-
-                                  <Title level={"h3"} className={`Shopping-bag__item-price`}>
-                                      39.99 $
-                                  </Title>
-
-                                  <ol className={`list-none Shopping-bag__item-list`}>
-                                      <li className={`Shopping-bag__item-list__item`}>
-                                          Art. No.: 54637253
-                                      </li>
-                                      <li className={`Shopping-bag__item-list__item`}>
-                                          Color: Mint
-                                      </li>
-                                      <li className={`Shopping-bag__item-list__item`}>
-                                          Size: 21*45
-                                      </li>
-                                      <li className={`Shopping-bag__item-list__item`}>
-                                          Total: 39.99
-                                      </li>
-                                  </ol>
-
-                                  <Flex gap={6}>
-                                      <Button icon={<IoHeartOutline />} />
-
-                                      <Select
-                                          defaultValue={"1"}
-                                          options={[
-                                              { value: 1, label: 1, disabled: true},
-                                              { value: 2, label: 2 },
-                                          ]}
-                                      />
-                                  </Flex>
-
-                                  <Button icon={<IoMdClose />} className={`Shopping-bag__item-close`} />
-                              </div>
-
-                          </Flex>
+                        {productItem}
                       </Col>
 
                       <Col span={10} className={`Shopping-bag__order`}>

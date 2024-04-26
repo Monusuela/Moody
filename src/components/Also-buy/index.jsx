@@ -1,4 +1,4 @@
-import {Fragment} from "react";
+import {Fragment, useState, useContext, useEffect} from "react";
 import Container from "../container";
 import "./also-buy.scss"
 import Cart from "../Cart";
@@ -8,9 +8,41 @@ import Img from "../image";
 import ArrowLeft from "../../images/arrow-left.svg"
 import ArrowRight from "../../images/arrow-right.svg"
 import Title from "../Title";
+import { Context } from "../../context";
+import Item from "antd/es/list/Item";
 
 const AlsoBuy = ({className}) => {
     className = `Also-buy ${className}`;
+
+    const {ProductsData} = useContext(Context);
+    const [Products, setProducts] = useState([])
+
+    useEffect (() => {
+        const products = []
+
+        for (let index = 0; index < ProductsData.length; index++) {
+            const randomIndex = Math.floor(
+                Math.random() * (ProductsData.length - 1)
+            )
+            products.push(ProductsData[randomIndex]);
+            
+        }
+
+        setProducts(() => products.length ? [...products] : []) 
+    }, [ProductsData?.length])
+
+    const productItem = Products.slice(0, 4).map((Item, index) => {
+        return <Fragment key={index}>
+            <Cart image={Item.image} 
+                      title={Item.title} 
+                      type={"product"} 
+                      vertical 
+                      colors={Item.colors} 
+                      href={`/catalog/product/${Item.id}`} 
+                      price={Item.price} />
+        </Fragment>
+    })
+
 
   return(
       <Fragment>
@@ -18,11 +50,8 @@ const AlsoBuy = ({className}) => {
               <Container className={`Also-buy__container`}>
                   <Title level={"h2"}>Also You May Like</Title>
                   <Flex gap={24} align={"center"} >
-                      <Cart image={Product} title={"Product title"} type={"product"} vertical colors={["white", "black"]} href={"#"} price={30} />
-                      <Cart image={Product} title={"Product title"} type={"product"} vertical colors={["white", "black"]} href={"#"} price={30} />
-                      <Cart image={Product} title={"Product title"} type={"product"} vertical colors={["white", "black"]} href={"#"} price={30} />
-                      <Cart image={Product} title={"Product title"} type={"product"} vertical colors={["white", "black"]} href={"#"} price={30} />
-                  </Flex>
+                    {productItem}  
+                    </Flex>
 
                   <Flex className="Also-buy__arrows" justify={"space-between"}>
                     <Img src={ArrowLeft} alt={`Arrow`} />
