@@ -17,9 +17,11 @@ import Product2 from "../images/product2.png";
 import Input from "../components/Input";
 import { default as Btn } from "../components/Button";
 import { Context } from "../context"
+import { SavedContext } from "../context/saved";
 
 const Home = () => {
     const { ProductsData } = useContext(Context);
+    const {handleSaved} = useContext(SavedContext)
     const [ShortProducts, setShortproducts] = useState([]);
     const [TopProducts, setTopProducts] = useState([]);
     const [SliceTopProducts, setSliceTopProducts] = useState(4)
@@ -46,7 +48,9 @@ const Home = () => {
                     image={item.image}
                     title={item.title}
                     stars={item.stars} price={item.price}
-                    href={`/catalog/product/${item.id}`} />
+                    href={`/catalog/product/${item.id}`}
+                    handleSaved={() => handleSaved(item)}
+                     />
             </Fragment>
         )
     })

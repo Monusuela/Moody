@@ -94,7 +94,7 @@ const Cart = ({type, key, className, body, title, href, image, vertical, horizon
                           <Flex className="Cart__options" gap={20} align={"center"} justify={"center"}>
                               <Button icon={<TbShoppingBag />} />
                               <span className={`Cart__options-line`}>&#124;</span>
-                              <Button icon={<IoMdHeartEmpty />} className={saved ? `saved` : ""} />
+                              <Button onClick={props.handleSaved} icon={<IoMdHeartEmpty />} className={saved ? `saved` : ""} />
                           </Flex>
                       </Image>
                       <Title level={"h3"} className={`Cart__vertical-title`}>{title}</Title>
@@ -130,7 +130,7 @@ const Cart = ({type, key, className, body, title, href, image, vertical, horizon
                               <Flex className="Cart__options" gap={20} align={"center"} justify={"center"}>
                                   <Button icon={<TbShoppingBag />} />
                                   <span className={`Cart__options-line`}>&#124;</span>
-                                  <Button icon={<IoMdHeartEmpty  />} className={saved ? `saved` : ""} />
+                                  <Button onClick={props.handleSaved.saved} icon={<IoMdHeartEmpty  />} className={saved ? `saved` : ""} />
                               </Flex>
                           </Image>
 

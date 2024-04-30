@@ -1,4 +1,4 @@
-import {Fragment} from "react";
+import {Fragment, useState, useEffect} from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Container from "../components/container";
 import {Button, Col, Flex, Row, Select, Typography} from "antd";
@@ -15,11 +15,16 @@ import { useCart } from "react-use-cart";
 import { ProductItem } from "./ProductItem";
 
 const Bag = () => {
-    const {isEmpty, items, updataItemQuantity, removeItem} = useCart()
+    const {isEmpty, items, updataItemQuantity, removeItem, cartTotal } = useCart()
+    const [Shipping, setShipping] = useState(0)
+
+    useEffect(() => {
+        setShipping(prev => cartTotal + prev)
+    }, [])
 
     const productItem = items.map((product, index) => {
 
-        return <Fragment>
+        return <Fragment key={index}>
             <ProductItem 
             color={product.colors.join(" ")}
             image={product.image}
@@ -43,7 +48,13 @@ const Bag = () => {
 
                   <Row className={`Shopping-bag__row`} justify={"space-between"}>
                       <Col span={13} className={`Shopping-bag--bag`}>
-                        {productItem}
+                        {
+                            isEmpty ?
+                             <Title level={"h3"} >
+                            Bag is Empty 
+                        </Title> 
+                        : productItem
+                        }
                       </Col>
 
                       <Col span={10} className={`Shopping-bag__order`}>
@@ -75,7 +86,7 @@ const Bag = () => {
                                               Order value
                                           </Title>
                                           <Title bodyText={"p"}>
-                                              82.00$
+                                              {cartTotal}$
                                           </Title>
                                       </Flex>
                                   </li>
@@ -97,7 +108,7 @@ const Bag = () => {
                                               Total
                                           </Title>
                                           <Title bodyText={"p"}>
-                                              82.00$
+                                              {Shipping}$
                                           </Title>
                                       </Flex>
                                   </li>
