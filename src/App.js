@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Container from "./components/container";
-import {Button, Flex} from "antd";
+import { Button, Flex } from "antd";
 import Logo from "./components/logo"
 import { IoMdSearch } from "react-icons/io"
 import { LuUser } from "react-icons/lu";
@@ -14,15 +14,28 @@ import Home from "./pages/Home"
 import Catalog from "./pages/Catalog"
 import Product from "./pages/Product"
 import Bag from "./pages/Busket";
-import NotFound from "./pages/NotFound"; 
+import NotFound from "./pages/NotFound";
 import Saved from "./pages/Saved";
 import Input from "./components/Input";
 import { useCart } from "react-use-cart";
+import { Helmet } from "react-helmet";
+import OgImage from "./images/banner-image.png"
 
 const App = () => {
-    const {totalUniqueItems } = useCart();
+    const { totalUniqueItems } = useCart();
+
     return (
         <Fragment>
+            <Helmet> 
+                <meta name="description" content="Moody Store учебный проект"/>
+
+                <meta name="keywords" content="Moody, Moody store, Moody, Moody studio, Online market"/>
+                <meta property="og:title" content="Moody Studio"/>
+                <meta property="og:description" content="Moody Studio учебный проект..."/>
+                <meta property="og:image" content={OgImage}/>
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:type" content="website"/>
+            </Helmet>
             <header className="header">
                 <Container>
                     <Flex
@@ -47,7 +60,7 @@ const App = () => {
                     </Flex>
 
                     <nav className="header__menu">
-                        
+
                         <Link to={"/"} className="header__menu-link">Home</Link>
                         <Link to={"/catalog/"} className="header__menu-link">Catalog</Link>
                         <Link to={"/bag/"} className="header__menu-link">Bag</Link>
@@ -64,15 +77,15 @@ const App = () => {
 
                     <Route path="/catalog/product/:id/" element={<Product />} />
 
-                    <Route path={"/bag/"} element={<Bag />}  />
+                    <Route path={"/bag/"} element={<Bag />} />
 
-                    <Route path={"*"} element={<NotFound />}  />
+                    <Route path={"*"} element={<NotFound />} />
 
-                    <Route path={"/saved/"} element={<Saved />}  />
+                    <Route path={"/saved/"} element={<Saved />} />
                 </Routes>
             </Content>
 
-            <Footer/>
+            <Footer />
         </Fragment>
     )
 }

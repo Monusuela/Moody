@@ -18,10 +18,11 @@ import Input from "../components/Input";
 import { default as Btn } from "../components/Button";
 import { Context } from "../context"
 import { SavedContext } from "../context/saved";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const { ProductsData } = useContext(Context);
-    const {handleSaved} = useContext(SavedContext)
+    const { handleSaved } = useContext(SavedContext)
     const [ShortProducts, setShortproducts] = useState([]);
     const [TopProducts, setTopProducts] = useState([]);
     const [SliceTopProducts, setSliceTopProducts] = useState(4)
@@ -50,31 +51,34 @@ const Home = () => {
                     stars={item.stars} price={item.price}
                     href={`/catalog/product/${item.id}`}
                     handleSaved={() => handleSaved(item)}
-                     />
+                />
             </Fragment>
         )
-    })
+    });
 
     const handleMore = () => {
         SliceTopProducts > TopProducts.length ? setSliceTopProducts(4)
-        : setSliceTopProducts(prev => prev +4)
+            : setSliceTopProducts(prev => prev + 4)
     }
 
     const topItem = TopProducts.slice(0, SliceTopProducts).map(item => {
         return (
             <Fragment key={item.id}>
                 <Cart
-                type={"product"}
-                horizontal image={item.image}
-                href={`/catalog/product/${item.id}`}
-                title={item.title}
-                price={item.price} stars={item.stars} />
+                    type={"product"}
+                    horizontal image={item.image}
+                    href={`/catalog/product/${item.id}`}
+                    title={item.title}
+                    price={item.price} stars={item.stars} />
             </Fragment>
         )
     })
 
     return (
         <Fragment>
+        <Helmet>
+            <title>Moody - Home</title>
+        </Helmet>
             <Container>
 
                 <Flex
@@ -168,7 +172,9 @@ const Home = () => {
                         <Cart type={"common"} href={"#"} title={`DECOR`}
                             body={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
                             image={CartImage1} />
+
                         {shortItem}
+
                         <Cart type={"common"} href={"#"} title={`BOHO CHIC`}
                             body={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
                             image={CartImage2} />
@@ -199,7 +205,7 @@ const Home = () => {
                 <Container>
                     <Typography.Title level={2} className={`Top-rating__title`}>TOP RATING</Typography.Title>
                     <Flex gap={25} wrap={"wrap"} align={"center"} className={"Top-rating__row"}>
-                       {topItem}
+                        {topItem}
                     </Flex>
 
                     <div className="Top-rating__buttons">

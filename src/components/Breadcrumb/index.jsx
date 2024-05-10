@@ -14,7 +14,7 @@ const Breadcrumb = ({className, current = "Current Page"}) => {
     let PathElement = ""
 
     for (const pathElement of path) {
-        console.log(pathElement)
+        
         if(pathElement !== "/"){
            PathElement += pathElement;
         }else if(PathElement !== ""){

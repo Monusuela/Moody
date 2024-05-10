@@ -1,26 +1,21 @@
-import Item from "antd/es/list/Item";
-import { Children, useEffect } from "react";
-import { createContext } from "react";
+import { createContext, useEffect } from "react"
 import useLocalStorage from "react-use-localstorage";
 
 const SavedContext = createContext();
 
-const SavedProvider = ({children}) => {
-    const [SavedLocal, setSavedLocal] = useLocalStorage("saved", []);
+const SavedProvider = ({ children }) => {
 
-    // useEffect(() => {
-    //     setSaved([])
-    // }, [])
+    const [SavedLocal, setSavedLocal] = useLocalStorage("saved",[]);
 
-    const handleSaved = ( item ) => {
-      setSavedLocal(JSON.stringify([{ ...item, saved: true}, ...SavedLocal]))
+    const handleSaved = (item) => {
+        setSavedLocal(JSON.stringify([{ ...item, saved: true }, ...SavedLocal]))
     }
-    
-    const contextValue = {SavedLocal, setSavedLocal, handleSaved};
 
-    return <SavedContext.Provider value={contextValue}>
+    const contextValues = { SavedLocal, handleSaved };
+
+    return <SavedContext.Provider value={contextValues}>
         {children}
     </SavedContext.Provider>
 }
 
-export {SavedContext, SavedProvider};
+export { SavedContext, SavedProvider };

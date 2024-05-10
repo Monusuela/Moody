@@ -1,4 +1,3 @@
-
 import { Fragment, useState, useEffect, useContext, useReducer } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Container from "../components/container";
@@ -14,8 +13,8 @@ import { default as Btn } from "../components/Button";
 import axios from "axios";
 import { Context } from "../context/index"
 import { useParams } from "react-router-dom";
-// import { type } from "@testing-library/user-event/dist/type";
 import { useCart } from "react-use-cart";
+import { Helmet } from "react-helmet"
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -42,7 +41,7 @@ const reducer = (state, action) => {
         }
 
         default:
-            throw new Error(`Error unknown type ${action.type}`)
+            throw new Error(`Error unknown type ${action.type}`);
 
     }
 }
@@ -50,7 +49,7 @@ const reducer = (state, action) => {
 const Product = () => {
     const { APIUrl } = useContext(Context);
     const { id } = useParams()
-    const {addItem} = useCart()
+    const { addItem } = useCart()
 
     const [state, dispatch] = useReducer(reducer, {
         data: {},
@@ -65,15 +64,15 @@ const Product = () => {
     // const [Disabled, setDisabled] = useState(true);
 
     const handleProductSize = (value) => {
-        dispatch({type: "SIZE", size:value})
+        dispatch({ type: "SIZE", size: value })
     }
 
     const handleDisabled = () => {
-       dispatch({type: "DISABLED" })
+        dispatch({ type: "DISABLED" })
 
-    //    console.log(state?.data);
+        // console.log(state?.data);
 
-    addItem(state?.data)
+        addItem(state?.data);
     }
 
     useEffect(() => {
@@ -98,6 +97,11 @@ const Product = () => {
     if (state.isParams)
         return (
             <Fragment>
+                <Helmet>
+                    <title>
+                        Moody - {state?.data.title}
+                    </title>
+                </Helmet>
                 <Breadcrumb current={state?.data.title} />
 
                 <section className="Product">
@@ -117,9 +121,6 @@ const Product = () => {
                                         <Img className={`Product__imageholder`} src={state?.data.image} alt={state?.data.title} />
                                     </Col>
                                 </Row>
-
-
-
 
                                 <Row>
                                     <Col span={24} className={`Product__data-desc`}>
@@ -185,7 +186,7 @@ const Product = () => {
             </Fragment>
         )
 
-    return <Title level={"h1"} > Empty or Not Found </Title>
+    return <Title level={"h3"}> Empty or Not Found </Title>
 }
 
 export default Product;

@@ -26,7 +26,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Living Room","Premium Quality", "Bathroom"],
+        "shopBy": ["Living Room","Bedroom", "Bathroom"],
         "gender": "Man",
         "colors": [
           "brown",
@@ -59,7 +59,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Living Room","Child Room", "Premium Quality"],
+        "shopBy": ["Living Room","Child Room", "Outdoor"],
         "gender": "Woman",
         "colors": [
           "grey"
@@ -91,7 +91,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Premium Quality","Child Room", "Outdoor"],
+        "shopBy": ["Bedroom","Child Room", "Outdoor"],
         "gender": "Man",
         "colors": [
           "orange"
@@ -123,7 +123,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Conscious","Living Room", "Outdoor"],
+        "shopBy": ["Bedroom","Living Room", "Outdoor"],
         "gender": "Woman",
         "colors": [
           "grey"
@@ -155,7 +155,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Bedroom","Living Room", "Conscious"],
+        "shopBy": ["Bedroom","Living Room", "Child Room"],
         "gender": "Man",
         "colors": [
           "grey",
@@ -188,7 +188,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Bedroom","Conscious", "Child Room"],
+        "shopBy": ["Bedroom","Outdoor", "Child Room"],
         "gender": "Man",
         "colors": [
           "lightbrown"
@@ -221,7 +221,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Bedroom","Outdoor", "Classic Collection"],
+        "shopBy": ["Bedroom","Outdoor", "Living Room"],
         "gender": "Woman",
         "colors": [
           "brown",
@@ -254,7 +254,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Child Room","Classic Collection", "Living Room"],
+        "shopBy": ["Child Room","Outdoor", "Living Room"],
         "gender": "Woman",
         "colors": [
           "grey"
@@ -286,7 +286,7 @@
       "quantity": 1,
       "category": {
 
-        "shopBy": ["Classic Collection","Outdoor", "Bathroom"],
+        "shopBy": ["Child Room","Outdoor", "Bathroom"],
         "gender": "Man",
         "colors": [
           "pink", 
